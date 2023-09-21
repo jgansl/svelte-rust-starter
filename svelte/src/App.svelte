@@ -1,30 +1,31 @@
 <script>
-	export let name;
+	import {Content} from 'carbon-components-svelte';
+	
+	export let bindings;
+
+	// let {Car,color} = bindings; // destructure for easier access
+	// console.log(Car,color);
+	let {Car,color} = bindings; // destructure for easier access
+
+	let c = Car.new();
+	c.number = 5;
+	c.color = 775577;
+	console.log(c);
+
+	let c2 = color(c,557755);
+	console.log(c2.number,c2.color);
+	
+	let c3 = c2.duplicate();
+	c3.change_number(7);
+	console.log(c3.number);
+	console.log(c3.number,c3.color);
+	// console.log(c3.get_id());
+
+	console.log(c2,c3);
 </script>
 
 <main>
-	<h1>Hello {name}!</h1>
-	<p>Visit the <a href="https://svelte.dev/tutorial">Svelte tutorial</a> to learn how to build Svelte apps.</p>
+	<Content>
+		<h1>{bindings.add(11,7)}</h1>
+	</Content>
 </main>
-
-<style>
-	main {
-		text-align: center;
-		padding: 1em;
-		max-width: 240px;
-		margin: 0 auto;
-	}
-
-	h1 {
-		color: #ff3e00;
-		text-transform: uppercase;
-		font-size: 4em;
-		font-weight: 100;
-	}
-
-	@media (min-width: 640px) {
-		main {
-			max-width: none;
-		}
-	}
-</style>

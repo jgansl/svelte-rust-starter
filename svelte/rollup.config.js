@@ -6,6 +6,8 @@ import resolve from '@rollup/plugin-node-resolve';
 import livereload from 'rollup-plugin-livereload';
 import css from 'rollup-plugin-css-only';
 
+import rust from '@wasm-tool/rollup-plugin-rust';
+
 const production = !process.env.ROLLUP_WATCH;
 
 function serve() {
@@ -38,6 +40,10 @@ export default {
 		file: 'public/build/bundle.js'
 	},
 	plugins: [
+		rust({ 
+			verbose: true,
+			serverPath: "build/"
+		}),
 		svelte({
 			compilerOptions: {
 				// enable run-time checks when not in production
